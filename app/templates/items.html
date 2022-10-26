@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+    <div>
+            <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Наименование товара</th>
+          <th scope="col">цена</th>
+          <th scope="col">действие</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for item in items %}
+        <tr>
+          <th scope="row"> {{ item.id }}</th>
+          <td> {{item.name}} </td>
+          <td> {{ item.price }} </td>
+          <td><a href="{{url_for('single_item', item_id = item.id)}}">Подробнее</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  <div>
+    <a href="{{url_for('create_item')}}" class="btn btn-warning" >Добавить новый товар</a>
+  </div>
+{% endblock %}
+
+
+
+

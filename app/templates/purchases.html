@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+    <div>
+            <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ФИО покупателя</th>
+          <th scope="col">возраст</th>
+            <th scope="col">дата</th>
+          <th scope="col">действие</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for purchase in purchases %}
+        <tr>
+          <th scope="row"> {{ purchase.id }}</th>
+          <td> {{purchase.name}} </td>
+          <td> {{ purchase.age }} </td>
+            <td> {{ purchase.date_purchase }} </td>
+          <td><a href="{{url_for('single_purchase', purchase_id = purchase.id)}}">Подробнее</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  <div>
+    <a href="{{url_for('create_purchase')}}" class="btn btn-warning" >Добавить новую покупку</a>
+  </div>
+{% endblock %}
